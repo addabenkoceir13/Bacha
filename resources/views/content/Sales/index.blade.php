@@ -75,13 +75,14 @@
             @endif
             <td>{{ $sale->created_at->format('d-m-Y') }}</td>
             <td>
-              <button  type="button" class="btn btn-sm  btn-none" data-bs-toggle="modal" data-bs-target="#modalEditBuilding-{{ $sale->id }}">
-                <span class="badge bg-label-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-edit-alt bx-xs' ></i> <span>{{ __('Modify building materials') }}</span>">
+              <button  type="button" class="btn btn-sm  btn-none" data-bs-toggle="modal" data-bs-target="#modalEditSales-{{ $sale->id }}">
+                <span class="badge bg-label-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-edit-alt bx-xs' ></i> <span>{{ __('Modify Sales') }}</span>">
                   <i class="bx bx-edit-alt me-1"></i>
                 </span>
               </button>
+              @include('content.Sales.edit')
               <button type="button" class="btn btn-sm btn-none" data-bs-toggle="modal" data-bs-target="#modalDeleteBuilding-{{ $sale->id }}">
-                <span class="badge bg-label-danger" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-trash bx-xs' ></i> <span>{{ __('Delete building material') }}</span>">
+                <span class="badge bg-label-danger" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-trash bx-xs' ></i> <span>{{ __('Delete Sales') }}</span>">
                   <i class="bx bx-trash me-1"></i>
                 </span>
               </button>
@@ -156,15 +157,27 @@
         }
       });
   });
-  $('#is-debt-fields').hide()
 
   document.getElementById('is_debt').addEventListener('change', function() {
-      const isDebtFields = document.getElementById('is-debt-fields');
       if (this.checked) {
           $('#is-debt-fields').show()
       } else {
           $('#is-debt-fields').hide()
       }
+  });
+  $(document).on('change', '[id^=is_debt-edit-]', function() {
+      let id = $(this).attr('id').split('-').pop(); // Extract the debt id from the button's ID
+      console.log(id);
+
+      if (this.checked) {
+          $('.is-debt-fields-edit').show()
+      } else {
+          $('.is-debt-fields-edit').hide()
+      }
+  });
+  document.getElementById('is_debt-edit').addEventListener('change', function() {
+
+
   });
 
 </script>
