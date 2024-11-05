@@ -8,7 +8,7 @@
               {{-- @include('_partials.macros',["width"=>25,"withbg"=>'#696cff']) --}}
           </span>
           <span class="app-brand-text demo menu-text fw-bold text-capitalize ms-2">
-              {{ config('app.locale') == 'en' ? "MohAdda" : "محمد عدة"  }}
+              {{ config('app.locale') == 'en' ? config('variables.templateName') :  config('variables.templateNameAr')  }}
           </span>
       </a>
 
@@ -41,21 +41,29 @@
             <div>{{ __('Services') }}</div>
         </a>
         <ul class="menu-sub">
-          <li class="menu-item {{ request()->routeIs('services') ? 'active' : '' }}">
-            <a href="" class="menu-link">
+          <li class="menu-item {{ request()->routeIs('services.category.index') ? 'active' : '' }}">
+            <a href="{{ route('services.category.index') }}" class="menu-link">
                 <div>{{ __('Building Materials') }}</div>
             </a>
           </li>
 
-          <li class="menu-item {{ request()->routeIs('services') ? 'active' : '' }}">
+          {{-- <li class="menu-item {{ request()->routeIs('services') ? 'active' : '' }}">
             <a href="" class="menu-link">
                 <div>{{ __('Tractor driver') }}</div>
             </a>
-          </li>
-
-
+          </li> --}}
 
         </ul>
+      </li>
+
+      <li class="menu-header small text-uppercase">
+          <span class="menu-header-text">{{ __('Sales') }}</span>
+      </li>
+      <li class="menu-item {{ request()->routeIs('sales.index') ? 'active' : '' }}">
+          <a href="{{ route('sales.index') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-collection"></i>
+              <div>{{ __('Daily Sales') }}</div>
+          </a>
       </li>
 
 </aside>

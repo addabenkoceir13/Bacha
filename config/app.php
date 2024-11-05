@@ -178,6 +178,7 @@ return [
     App\Providers\RouteServiceProvider::class,
     App\Providers\MenuServiceProvider::class,
 
+    App\Providers\EloquentRepositoryProvider::class,
   ],
 
   /*

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name_product');
             $table->string('quantity');
             $table->string('amount');
+            $table->enum('is_debt',[0,1])->default(0);
             $table->string('name_client')->nullable();
             $table->text('notes')->nullable();
             $table->date('date_debt');

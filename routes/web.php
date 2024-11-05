@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Sales\SalesController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -34,7 +36,10 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/', 'App\Http\Controllers\dashboard\Analytics@index')->name('dashboard-analytics')->middleware('auth');
 
 Route::group(['middleware' => ['auth']], function () {
-  
+    // ** Start for sertvices
+    Route::resource('services/category', CategoryController::class)->names('services.category');
+    // ** end for sertvices
+    Route::resource('sales', SalesController::class);
 });
 
 // pages
