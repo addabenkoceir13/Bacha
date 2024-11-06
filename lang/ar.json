@@ -121,6 +121,18 @@
   "Delete Sales" : "حذف المبيعات",
   "Filter by Status" : "تصفية حسب الحالة",
   "All" : "كل",
+  "Sales added successfully" : "تمت إضافة المبيعات بنجاح",
+  "Sales updated successfully" : "تم تحديث المبيعات بنجاح",
+  "Do you really want to delete this sales?" : "هل تريد حقًا حذف هذه المبيعات؟",
+  "Sales deleted successfully" : "تم حذف المبيعات بنجاح",
+  "Delete building material" : "حذف مواد البناء",
+  "Pay a Sales" : "دفع المبيعات",
+  "Do you really want to pay this sales?" : "هل تريد حقًا دفع هذه المبيعات؟",
+  "Pay" : "يدفع",
+  "" : "",
+  "" : "",
+  "" : "",
+  "" : "",
   "" : "",
   "" : ""
 }

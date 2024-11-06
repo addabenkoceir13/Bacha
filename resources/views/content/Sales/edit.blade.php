@@ -6,17 +6,20 @@
           <h5 class="modal-title" id="modalCenterTitle">{{ __('Modify Sales') }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('sales.store') }}" method="POST">
+        <form action="{{ route('sales.update', $sale->id) }}" method="POST">
           @csrf
+          @method('PATCH')
           <div class="modal-body">
             <div class="row">
               <div class="row g-2">
                 <div class="col-md-6 mb-3">
                   <label for="category_id" class="form-label">{{ __('Select the item') }}</label>
-                  <select id="category_id" class="form-select" name="category_id" required>
-                    <option value="{{ $sale->category_id }}" selected>{{ $sale->name_product }}</option>
+                  <select id="category_id" class="form-select" name="category_id" value="{{ $sale->category_id }}">
                     @foreach ($categories as $category)
-                      <option value="{{ $category->id }}" data-name="{{ $category->name }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" data-name="{{ $category->name }}"
+                      {{ $category->id == $sale->category_id ? 'selected' : '' }}>
+                      {{ $category->name }}
+                  </option>
                     @endforeach
                   </select>
                   @error('category_id')
@@ -69,7 +72,7 @@
                   <label for="name_client" class="form-label">{{ __('Customer Name') }}</label>
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-name_client2" class="input-group-text"><i class="bx bx-user"></i></span>
-                    <input type="text" id="name_client-search" name="name_client" class="form-control @error('name_client') is-invalid @enderror" value="{{ $sale->name_client }}" />
+                    <input type="text" id="name_client-search" name="name_client" class="form-control @error('name_client') is-invalid @enderror" @if ($sale->is_debt) value="{{ $sale->name_client }}" @endif placeholder="{{ __('Enter Name') }}" />
 
                   </div>
                   @error('name_client')

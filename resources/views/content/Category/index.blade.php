@@ -40,6 +40,7 @@
                   <i class="bx bx-edit-alt me-1"></i>
                 </span>
               </button>
+              @include('content.Category.edit')
               <button type="button" class="btn btn-sm btn-none" data-bs-toggle="modal" data-bs-target="#modalDeleteBuilding-{{ $category->id }}">
                 <span class="badge bg-label-danger" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-trash bx-xs' ></i> <span>{{ __('Delete building material') }}</span>">
                   <i class="bx bx-trash me-1"></i>

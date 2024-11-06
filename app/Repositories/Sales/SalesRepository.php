@@ -10,6 +10,8 @@ interface SalesRepository
      */
     public function all();
 
+    public function filterBydate($date);
+
     /**
      * {@inheritdoc}
      */
@@ -36,5 +38,5 @@ interface SalesRepository
      * @param $search
      * @return mixed
      */
-    public function paginate($perPage, $search = null);
+    public function paginate($perPage = null, $search = null);
 }

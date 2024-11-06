@@ -16,6 +16,10 @@ class EloquentSales implements SalesRepository
     {
         return Sale::all();
     }
+    public function filterBydate($date)
+    {
+        return Sale::whereDate('created_at', $date)->orderBy('id', 'desc')->get();
+    }
     /**
      * {@inheritdoc}
      */
@@ -62,16 +66,13 @@ class EloquentSales implements SalesRepository
      * @param $search
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|mixed
      */
-    public function paginate($perPage, $search = null)
+    public function paginate($perPage = null, $search = null)
     {
         $query = Sale::query();
 
         $result = $query->orderBy('id', 'desc')
             ->get();
 
-        if ($search) {
-            $result->appends(['search' => $search]);
-        }
         return $result;
     }
 }

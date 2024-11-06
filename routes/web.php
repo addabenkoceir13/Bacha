@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('services/category', CategoryController::class)->names('services.category');
     // ** end for sertvices
     Route::resource('sales', SalesController::class);
+    Route::patch('sales/payq/{sales}', [SalesController::class, 'pays'])->name('sales.pays');
 });
 
 // pages

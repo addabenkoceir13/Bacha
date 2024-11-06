@@ -71,16 +71,27 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+      $validator = Validator::make($request->all(),[
+        'name' => ['required','string','max:255'],
+        'type' => ['required','string','max:255'],
+      ]);
+
+      if ($validator->fails()){
+        toastr()->error($validator->errors()->first());
+        return redirect()->back()->withErrors($validator)->withInput();
+      }
+      try {
+        $this->category->update($id,$request->all());
+        toastr()->success(__('Building materials successfully updated'));
+        return redirect()->back();
+      }
+      catch (\Exception $e) {
+        toastr()->error($e->getMessage());
+        return redirect()->back();
+      }
     }
 
     /**

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('is_debt',[0,1])->default(0);
             $table->string('name_client')->nullable();
             $table->text('notes')->nullable();
-            $table->date('date_debt');
+            $table->date('date_debt')->nullable();
             $table->enum('type',['debt', 'normal'])->default('normal');
             $table->enum('status_debt',['paid', 'unpaid'])->default('unpaid');
             $table->timestamps();
